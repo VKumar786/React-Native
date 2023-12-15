@@ -1,8 +1,6 @@
-<!--
-    TODO: 12. Showing a Custom Component
-    TODO: 13. Showing a Custom Component
- -->
-
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import HomeScreen from "./src/screens/HomeScreen";
 import AboutScreen from "./src/screens/AboutScreen";
 
 const navigator = createStackNavigator(
@@ -17,3 +15,5 @@ const navigator = createStackNavigator(
     },
   },
 );
+
+export default createAppContainer(navigator);
