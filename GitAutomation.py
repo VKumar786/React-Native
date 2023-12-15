@@ -12,7 +12,7 @@ def git_push(message, branch):
 
 
 # Replace 'Your message here' and 'your-branch-name' with your desired message and branch name
-el = 20001
+el = 20
 message = "tut" + str(el)
 branch = "main"
 

@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, StyleSheet, View, FlatList } from "react-native";
 
 const AboutScreen = () => {
-	let arr = [
+	const [data, setData] = useState([
 		{ name: "vishal" },
 		{ name: "suraj" },
 		{ name: "vivek" },
-	]
+	]);
+
 	return (
 		<View>
-			<FlatList data={arr} renderItem={(element) => {
+			<FlatList data={data} renderItem={(element) => {
 				// element { "item" : { name : "vishal" }, "index": "0", "separators": {}}
-				return <Text>{JSON.stringify(element)}</Text>
+				return <Text key={element.item.name}>{JSON.stringify(element)}</Text>
 			}} />
-			<FlatList data={arr} renderItem={({ item, index }) => {
+			<FlatList data={data} renderItem={({ item, index }) => {
 				// element { "item" : { name : "vishal" }, "index": "0", "separators": {}}
-				return <Text key={index}>{item.name}</Text>
+				return <Text key={index} onPress={() => {
+					setData(prev => {
+						return prev.slice(0, -1)
+					})
+				}}>{item.name}</Text>
 			}} />
 		</View>
 	)
