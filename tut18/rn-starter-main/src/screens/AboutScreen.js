@@ -16,7 +16,7 @@ const AboutScreen = () => {
 			}} />
 			<FlatList data={data} renderItem={({ item, index }) => {
 				// element { "item" : { name : "vishal" }, "index": "0", "separators": {}}
-				return <Text key={index} onPress={() => {
+				return <Text keyExtractor={item => item.name + index} onPress={() => {
 					setData(prev => {
 						return prev.slice(0, -1)
 					})

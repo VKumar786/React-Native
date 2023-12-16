@@ -11,8 +11,18 @@ def git_push(message, branch):
         print(f"Error executing Git commands: {e}")
 
 
-# Replace 'Your message here' and 'your-branch-name' with your desired message and branch name
-el = 20
+
+
+
+
+
+el = 22
+
+
+
+
+
+
 message = "tut" + str(el)
 branch = "main"
 
