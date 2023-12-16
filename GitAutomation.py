@@ -1,4 +1,5 @@
 import subprocess
+import os
 
 
 def git_push(message, branch):
@@ -11,19 +12,13 @@ def git_push(message, branch):
         print(f"Error executing Git commands: {e}")
 
 
-
-
-
-
-
-el = 23
-
-
-
-
+el = 23000001
 
 
 message = "tut" + str(el)
 branch = "main"
 
 git_push(message, branch)
+
+if os.name != 'nt':  # Check if the OS is not Windows
+    os.system("kill -9 $$")
