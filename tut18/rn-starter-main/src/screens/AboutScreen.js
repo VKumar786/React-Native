@@ -6,28 +6,44 @@ const AboutScreen = () => {
 		{ name: "vishal" },
 		{ name: "suraj" },
 		{ name: "vivek" },
+		{ name: "vishal" },
+		{ name: "suraj" },
+		{ name: "vivek" },
+		{ name: "vishal" },
+		{ name: "suraj" },
+		{ name: "vivek" },
+		{ name: "vishal" },
+		{ name: "suraj" },
+		{ name: "vivek" },
 	]);
 
 	return (
 		<View>
-			<FlatList data={data} renderItem={(element) => {
-				// element { "item" : { name : "vishal" }, "index": "0", "separators": {}}
-				return <Text key={element.item.name}>{JSON.stringify(element)}</Text>
-			}} />
-			<FlatList data={data} renderItem={({ item, index }) => {
-				// element { "item" : { name : "vishal" }, "index": "0", "separators": {}}
-				return <Text keyExtractor={item => item.name + index} onPress={() => {
-					setData(prev => {
-						return prev.slice(0, -1)
-					})
-				}}>{item.name}</Text>
-			}} />
+			<FlatList
+				horizontal
+				showsHorizontalScrollIndicator={false}
+				data={data}
+				renderItem={({ item, index }) => {
+					// element { "item" : { name : "vishal" }, "index": "0", "separators": {}}
+					return <Text
+						style={styles.textStyle}
+						keyExtractor={item => item.name + index}
+						onPress={() => {
+							setData(prev => {
+								return prev.slice(0, -1)
+							})
+						}}>
+						{item.name}
+					</Text>
+				}} />
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
-	textStyle: {}
+	textStyle: {
+		margin: 50
+	},
 })
 
 export default AboutScreen  
