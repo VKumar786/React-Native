@@ -5,12 +5,20 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 const HomeScreen = ({ navigation }) => {
   return <View>
     <Text>Hello World</Text>
+    <Button 
+      style={styles.buttonStyle}
+      title="Go to Components Demo"
+      onPress={() => {
+        console.log("Go to Components Demo")
+      }}
+    />
     <Button
       style={styles.buttonStyle}
-      title="Go to Components Demo" />
-    <Button
-      style={styles.buttonStyle}
-      title="Go to List Demo" />  
+      title="Go to List Demo"
+      onPress={() => {
+        console.log("Go to List Demo")
+      }}
+       />
   </View>
 };
 
@@ -20,7 +28,7 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     margin: 10
-  } 
-}); 
+  }
+});
 
 export default HomeScreen;
