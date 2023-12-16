@@ -4,4 +4,7 @@
     TODO: 21. Why a Key Property?
     ? if key is not provided then it will delete random item from page tree
     TODO: 22. Solving the Key Issue
+    TODO: 23. A Few Props Around FlatList
+    TODO: 24. Exercise Overview
+    TODO: 25. Exercise Solution
  -->

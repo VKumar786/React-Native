@@ -2,16 +2,18 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import HomeScreen from "./src/screens/HomeScreen";
 import AboutScreen from "./src/screens/AboutScreen";
+import ExerciseScreen from './src/screens/ExerciseScreen'
 
 const navigator = createStackNavigator(
   {
     Home: HomeScreen,
     About: AboutScreen,
+    Exercise: ExerciseScreen,
   },
   {
-    initialRouteName: "About",
+    initialRouteName: "Exercise",
     defaultNavigationOptions: {
-      title: "About 😊",
+      title: "Exercise 😈",
     },
   },
 );
