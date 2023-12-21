@@ -2,7 +2,7 @@ import React from "react";
 import { Text, StyleSheet, Button, Linking, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = (props) => {
   return <View>
     <Text>Hello World</Text>
     <Button
@@ -15,7 +15,7 @@ const HomeScreen = ({ navigation }) => {
     <TouchableOpacity
       style={styles.buttonStyle}
       onPress={() => {
-        console.log("Go to List Demo")
+        props.navigation.navigate('List')
       }}>
       <Text style={styles.text}>Go to List Demo</Text>
     </TouchableOpacity>

@@ -11,7 +11,7 @@ def git_push(message, branch):
         print(f"Error executing Git commands: {e}")
 
 
-el = 28
+el = 29
 
 
 message = "tut" + str(el)
