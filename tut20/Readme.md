@@ -4,6 +4,8 @@
     TODO: 33. Parent-Child Relationships
     TODO: 36. Showing Images
     TODO: 37. Passing Images as Props
+    TODO: 38. Exercise Outline
+    TODO: 39. Exercise Solution
  -->
 
 <Image source={{ uri: "https://www.shutterstock.com/image-vector" }} style={{ width: 30, height: 30 }} />
