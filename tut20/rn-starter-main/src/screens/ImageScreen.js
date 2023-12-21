@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, Text, StyleSheet, Button, Linking, View } from "react-native";
+import { FlatList, Text, StyleSheet, Button, Linking, View, Image } from "react-native";
 import ImageDetails from '../component/ImageDetails'
 
 const ImageScreen = ({ DATA }) => {
@@ -9,8 +9,9 @@ const ImageScreen = ({ DATA }) => {
                 keyExtractor={(item) => item.title}
                 data={DATA}
                 renderItem={({ item }) =>
-                    <ImageDetails {...item} /> 
+                    <ImageDetails {...item} />
                 } />
+            <Image source={require("../../assets/mountain.jpg")} style={{ width: 30, height: 30 }} />
         </View>
     )
 }
