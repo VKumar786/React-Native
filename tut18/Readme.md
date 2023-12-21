@@ -8,3 +8,12 @@
     TODO: 24. Exercise Overview
     TODO: 25. Exercise Solution
  -->
+ <FlatList
+keyExtractor={(item) => item.name}
+data={Data}
+renderItem={({ item }) =>
+    <Text
+        style={{ margin: 100 }}>
+        {item.name} - Age {item.age}
+    </Text>
+} />
