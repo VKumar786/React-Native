@@ -13,28 +13,32 @@
     TODO: 55. Introduction to Reducers
     TODO: 56. Creating a Reducer
     TODO: 57. Applying State with a Reducer
+    TODO: 59. Community Convention in Reducers
+    ! what is use of useState coz after updating variable value then it trigger refresh event in virtual dom
+    TODO: 60. Exercise Outline 
+    TODO: 61. Exercise Solution 
  -->
 
 const reducer = (state, action) => {
   // state = { red: number, blue: number, green: number }
-  // action = { colorToChange: 'red' | 'blue' | 'green', amount: 10 | -10}
+  // action = { type: 'red' | 'blue' | 'green', payload: 10 | -10}
   console.warn(state, action);
-  switch (action.colorToChange) {
+  switch (action.type) {
     case 'red':
-      //! state.red = state.red + amount > invalid
+      //! state.red = state.red + payload > invalid
       return {
         ...state,
-        red: state.red + action.amount
+        red: Math.abs(state.red + action.payload) % 256
       }
     case 'blue':
       return {
         ...state,
-        blue: state.blue + action.amount
+        blue: Math.abs(state.blue + action.payload) % 256
       }
     case 'green':
       return {
         ...state,
-        green: state.green + action.amount
+        green: Math.abs(state.green + action.payload)% 256
       }
     default:
       return state
@@ -45,16 +49,6 @@ const HomeScreen = ({ navigation }) => {
   const [state, dispatch] = useReducer(reducer, { red: 0, blue: 0, green: 0 })
 
   return <View>
-    <ColorBtn title={"Red"} onInc={() => dispatch({ colorToChange: "red", amount: 15 })} onDec={() => dispatch({ colorToChange: "red", amount: -15 })} />
-    <ColorBtn title={"Blue"} onInc={() => dispatch({ colorToChange: "blue", amount: 15 })} onDec={() => dispatch({ colorToChange: "blue", amount: -15 })} />
-    <ColorBtn title={"Green"} onInc={() => dispatch({ colorToChange: "green", amount: 15 })} onDec={() => dispatch({ colorToChange: "green", amount: -15 })} />
-
-    <Text>rgb({state.red}, {state.blue}, {state.green})</Text>
-
-    <View style={{
-      width: 80,
-      height: 80,
-      backgroundColor: `rgb(${state.red}, ${state.blue}, ${state.green})`
-    }} />
-  </View>
-};
+    <ColorBtn title={"Red"} onInc={() => dispatch({ type: "red", payload: 15 })} onDec={() => dispatch({ type: "red", payload: -1 * 15 })} />
+    <ColorBtn title={"Blue"} onInc={() => dispatch({ type: "blue", payload: 15 })} onDec={() => dispatch({ type: "blue", payload: -1 * 15 })} />
+    <ColorBtn title={"Green"} onInc={() => dispatch({ type: "green", payload: 15 })} onDec={() => dispatch({ type: "green", payload: -1 * 15 })} />
