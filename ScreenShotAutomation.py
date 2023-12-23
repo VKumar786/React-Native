@@ -1,8 +1,8 @@
 import os
 import shutil
 
-# source_folder = '/home/bakru_k78/Pictures/Screenshots'
-source_folder = '/home/vkumar/Pictures/Screenshots'
+source_folder = '/home/bakru_k78/Pictures/Screenshots'
+# source_folder = '/home/vkumar/Pictures/Screenshots'
 destination_folder = os.getcwd()  # Current working directory
 
 # Get a list of all .png files in the source folder
