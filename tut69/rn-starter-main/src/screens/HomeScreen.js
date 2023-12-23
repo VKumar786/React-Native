@@ -20,12 +20,7 @@ const HomeScreen = ({ navigation }) => {
           borderColor: "#9DFF00",
           flex: 1,
           alignSelf: "flex-end",
-          // position: "absolute",
-          // top: 0,
-          // left: 0,
-          // right: 0,
-          // bottom: 0,
-          ...StyleSheet.absoluteFillObject
+          // top: 140
         }}
       >
         Hi There 👋
@@ -46,6 +41,9 @@ const styles = StyleSheet.create({
     margin: 7,
     display: "flex",
     height: "40%",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    gap: 5,
   },
   para: {
     borderColor: "pink",
@@ -53,8 +51,7 @@ const styles = StyleSheet.create({
     padding: 5,
     textAlign: "center",
     fontSize: 14,
-    // width: 50,
-    // height: 50
+    minHeight: "50%",
   },
 });
 
