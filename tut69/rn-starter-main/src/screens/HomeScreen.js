@@ -14,8 +14,20 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={{ ...styles.para, flex: 1 }}>Hi There 👋</Text>
-      <Text style={{ ...styles.para, borderColor: "#9DFF00", flex: 1, alignSelf: "flex-end" }}>Hi There 👋</Text>
-      <Text style={{ ...styles.para, borderColor: "red", flex: 1 }}>Hi There 👋</Text>
+      <Text
+        style={{
+          ...styles.para,
+          borderColor: "#9DFF00",
+          flex: 1,
+          alignSelf: "flex-end",
+          position: "absolute",
+        }}
+      >
+        Hi There 👋
+      </Text>
+      <Text style={{ ...styles.para, borderColor: "red", flex: 1 }}>
+        Hi There 👋
+      </Text>
     </View>
   );
 };
@@ -28,7 +40,7 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 7,
     display: "flex",
-    height: "40%"
+    height: "40%",
   },
   para: {
     borderColor: "pink",
@@ -38,7 +50,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     // width: 50,
     // height: 50
-  }
+  },
 });
 
 export default HomeScreen;
