@@ -1,12 +1,31 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { FlatList, Text, StyleSheet, Button, Linking, View } from "react-native";
 
 const HomeScreen = ({ navigation }) => {
-  const [cnt, setCnt] = useState(0);
+  const [colorArr, setColorArr] = useState([])
+  const generateRandomHex = () => {
+    const characters = '0123456789ABCDEF';
+    let hex = '#';
+    for (let i = 0; i < 6; i++) {
+      hex += characters[Math.floor(Math.random() * 16)];
+    }
+    return hex;
+  }
   return <View>
-    <Button title="Increase" onPress={() => setCnt(prev => prev + 1)}/>
-    <Text>Current Counter {cnt}</Text>
-    <Button title="Decrease" onPress={() => setCnt(prev => prev - 1)}/>
+    <Button title="Add Color" onPress={() => {
+      setColorArr(prev => [...prev, generateRandomHex()])
+    }} />
+    {/* {colorArr.map((item, idx) => {
+      return <Text key={idx} style={{ display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", width: 80, height: 70, backgroundColor: item }}>{item}</Text>
+    })} */}
+    <FlatList
+      horizontal
+      showsVerticalScrollIndicator={true}
+      keyExtractor={(item) => item}
+      data={colorArr}
+      renderItem={({ item }) => {
+        return <Text style={{ display: "flex", width: 80, height: 70, backgroundColor: item }}>{item}</Text>
+      }} />
   </View>
 };
 
