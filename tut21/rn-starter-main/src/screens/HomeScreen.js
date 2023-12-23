@@ -29,12 +29,12 @@ const HomeScreen = ({ navigation }) => {
         onChangeText={(e) => setName(e)}
         autoCapitalize="none"
         autoCorrect={false}
-        // onChange={(e) => {
-        //   console.log(e.target.value)
-        //   setName(e.target.value)
-        // }}
+      // onChange={(e) => {
+      //   console.log(e.target.value)
+      //   setName(e.target.value)
+      // }}
       />
-      <Text
+      {name.length > 0 && <Text
         style={{
           borderColor: "pink",
           backgroundColor: "#fff",
@@ -45,8 +45,12 @@ const HomeScreen = ({ navigation }) => {
           fontSize: 17,
         }}
       >
-        Your Name is {name} 😊
-      </Text>
+        Your Good Name 😊 is {name}
+
+        <View>
+          {name.length < 5 && <Text style={{ color: "red" }}>Name must be longer than 5 character</Text>}
+        </View>
+      </Text>}
     </View>
   );
 };

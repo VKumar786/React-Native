@@ -23,6 +23,8 @@
     TODO: 65. Weird Things with Text and State
     ! we communicate input using Callbacks function & maintain parent & child relationship 
     TODO: 66. Updating State
+    TODO: 67. Exercise Outline
+    TODO: 68. Exercise Solution
  -->
 REDUCER
 const reducer = (state, action) => {
