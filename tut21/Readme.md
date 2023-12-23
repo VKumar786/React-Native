@@ -6,4 +6,7 @@
     TODO: 45. Generating Random Colors
     TODO: 46. Adding Random Colors
     TODO: 47. Showing Colors with a FlatList
+    TODO: 48. App Overview
+    TODO: 51. Passing Callbacks to Children
+    TODO: 53. Validating State Changes
  -->

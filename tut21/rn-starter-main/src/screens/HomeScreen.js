@@ -1,31 +1,32 @@
 import React, { useState } from "react";
-import { FlatList, Text, StyleSheet, Button, Linking, View } from "react-native";
+import { FlatList, Text, StyleSheet, Button, Linking, View, TouchableOpacity } from "react-native";
 
 const HomeScreen = ({ navigation }) => {
-  const [colorArr, setColorArr] = useState([])
-  const generateRandomHex = () => {
-    const characters = '0123456789ABCDEF';
-    let hex = '#';
-    for (let i = 0; i < 6; i++) {
-      hex += characters[Math.floor(Math.random() * 16)];
-    }
-    return hex;
-  }
+  const [red, setRed] = useState(0)
+  const [blue, setBlue] = useState(0)
+  const [green, setGreen] = useState(0)
+
   return <View>
-    <Button title="Add Color" onPress={() => {
-      setColorArr(prev => [...prev, generateRandomHex()])
+    <Text>Red</Text>
+    <TouchableOpacity onPressIn={() => setInterval(() => setRed(prev => Math.abs((prev + 10) % 256)), 100)}>
+      <Text>+</Text>
+    </TouchableOpacity>
+    <TouchableOpacity onPressIn={() => setInterval(() => setRed(prev => Math.abs((prev - 10) % 256)), 100)}>
+      <Text>-</Text>
+    </TouchableOpacity>
+    <Text>Blue</Text>
+    <Button title="+" onPress={() => setBlue(prev => Math.abs((prev + 10) % 256))} />
+    <Button title="-" onPress={() => setBlue(prev => Math.abs((prev - 10) % 256))} />
+    <Text>Green</Text>
+    <Button title="+" onPress={() => setGreen(prev => Math.abs((prev + 10) % 256))} />
+    <Button title="-" onPress={() => setGreen(prev => Math.abs((prev - 10) % 256))} />
+
+    <Text>rgb({red}, {blue}, {green})</Text>
+    <View style={{
+      width: 80,
+      height: 80,
+      backgroundColor: `rgb(${red}, ${blue}, ${green})`
     }} />
-    {/* {colorArr.map((item, idx) => {
-      return <Text key={idx} style={{ display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", width: 80, height: 70, backgroundColor: item }}>{item}</Text>
-    })} */}
-    <FlatList
-      horizontal
-      showsVerticalScrollIndicator={true}
-      keyExtractor={(item) => item}
-      data={colorArr}
-      renderItem={({ item }) => {
-        return <Text style={{ display: "flex", width: 80, height: 70, backgroundColor: item }}>{item}</Text>
-      }} />
   </View>
 };
 
