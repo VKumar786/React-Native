@@ -1,23 +1,54 @@
 import React, { useState, useReducer } from "react";
-import { FlatList, Text, StyleSheet, Button, Linking, View, TouchableOpacity } from "react-native";
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'COUNTER':
-      return { ...state, count: state.count + action.payload }
-    default:
-      return state
-  }
-}
+import {
+  FlatList,
+  Text,
+  StyleSheet,
+  Button,
+  Linking,
+  View,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
 
 const HomeScreen = ({ navigation }) => {
-  const [state, dispatch] = useReducer(reducer, { count: 0 })
-  const { count } = state
-  return <View>
-    <Button title="Increase" onPress={() => dispatch({ type: 'COUNTER', payload: 1 })} />
-    <Button title="Decrease" onPress={() => dispatch({ type: 'COUNTER', payload: -1 })} />
-    <Text>Current Count: {count}</Text>
-  </View>
+  const [name, setName] = useState("");
+  return (
+    <View>
+      <TextInput
+        placeholder="Enter You Name"
+        value={name}
+        style={{
+          borderColor: "#eee",
+          backgroundColor: "#fff",
+          borderWidth: 1,
+          margin: 10,
+          padding: 10,
+          borderRadius: 5,
+          fontSize: 17,
+        }}
+        onChangeText={(e) => setName(e)}
+        autoCapitalize="none"
+        autoCorrect={false}
+        // onChange={(e) => {
+        //   console.log(e.target.value)
+        //   setName(e.target.value)
+        // }}
+      />
+      <Text
+        style={{
+          borderColor: "pink",
+          backgroundColor: "#fff",
+          borderWidth: 1,
+          margin: 10,
+          padding: 10,
+          borderRadius: 5,
+          fontSize: 17,
+        }}
+      >
+        Your Name is {name} 😊
+      </Text>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({});

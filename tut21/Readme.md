@@ -17,8 +17,14 @@
     ! what is use of useState coz after updating variable value then it trigger refresh event in virtual dom
     TODO: 60. Exercise Outline 
     TODO: 61. Exercise Solution 
+    TODO: 62. Handling Text Input 
+    TODO: 63. Showing a Text Input
+    TODO: 64. Two Important Props
+    TODO: 65. Weird Things with Text and State
+    ! we communicate input using Callbacks function & maintain parent & child relationship 
+    TODO: 66. Updating State
  -->
-
+REDUCER
 const reducer = (state, action) => {
   // state = { red: number, blue: number, green: number }
   // action = { type: 'red' | 'blue' | 'green', payload: 10 | -10}
@@ -52,3 +58,19 @@ const HomeScreen = ({ navigation }) => {
     <ColorBtn title={"Red"} onInc={() => dispatch({ type: "red", payload: 15 })} onDec={() => dispatch({ type: "red", payload: -1 * 15 })} />
     <ColorBtn title={"Blue"} onInc={() => dispatch({ type: "blue", payload: 15 })} onDec={() => dispatch({ type: "blue", payload: -1 * 15 })} />
     <ColorBtn title={"Green"} onInc={() => dispatch({ type: "green", payload: 15 })} onDec={() => dispatch({ type: "green", payload: -1 * 15 })} />
+
+
+TEXT INPUT 
+
+  <TextInput
+    placeholder="Enter You Name"
+    value={name}
+    style={{ borderColor: "black", borderWidth: 1, margin: 2, padding: "2em 10em", fontSize: 15 }}
+    onChangeText={(e) => setName(e)}
+    autoCapitalize="none" // coz of ios
+    autoCorrect={false} // coz of ios 
+  // onChange={(e) => {
+  //   console.log(e.target.value)
+  //   setName(e.target.value)
+  // }} 
+  />
