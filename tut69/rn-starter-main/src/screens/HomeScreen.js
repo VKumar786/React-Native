@@ -13,9 +13,9 @@ import {
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.para}>Hi There 👋</Text>
-      <Text style={{ ...styles.para, borderColor: "yellow" }}>Hi There 👋</Text>
-      <Text style={{ ...styles.para, borderColor: "red" }}>Hi There 👋</Text>
+      <Text style={{ ...styles.para, flex: 1 }}>Hi There 👋</Text>
+      <Text style={{ ...styles.para, borderColor: "yellow", flex: 1 }}>Hi There 👋</Text>
+      <Text style={{ ...styles.para, borderColor: "red", flex: 3 }}>Hi There 👋</Text>
     </View>
   );
 };
@@ -28,12 +28,12 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 7,
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
     // width: "min-content",
     height: "100%",
     flexDirection: "row"
-  }, 
+  },
   para: {
     borderColor: "pink",
     borderWidth: 3,
