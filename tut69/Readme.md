@@ -5,4 +5,6 @@
     TODO: 73. Justify Content
     TODO: 74. Flex Values
     ! flex 1 will take as much as vertical space as it can 
+    TODO: 75. Align Self on Children
+    ! align-items: stretch is by default given
  -->

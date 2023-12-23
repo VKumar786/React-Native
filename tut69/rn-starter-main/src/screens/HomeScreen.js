@@ -14,8 +14,8 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={{ ...styles.para, flex: 1 }}>Hi There 👋</Text>
-      <Text style={{ ...styles.para, borderColor: "yellow", flex: 1 }}>Hi There 👋</Text>
-      <Text style={{ ...styles.para, borderColor: "red", flex: 3 }}>Hi There 👋</Text>
+      <Text style={{ ...styles.para, borderColor: "#9DFF00", flex: 1, alignSelf: "flex-end" }}>Hi There 👋</Text>
+      <Text style={{ ...styles.para, borderColor: "red", flex: 1 }}>Hi There 👋</Text>
     </View>
   );
 };
@@ -28,11 +28,7 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 7,
     display: "flex",
-    // alignItems: "center",
-    // justifyContent: "center",
-    // width: "min-content",
-    height: "100%",
-    flexDirection: "row"
+    height: "40%"
   },
   para: {
     borderColor: "pink",
