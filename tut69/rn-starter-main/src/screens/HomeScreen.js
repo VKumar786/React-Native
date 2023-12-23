@@ -20,7 +20,7 @@ const HomeScreen = ({ navigation }) => {
           borderColor: "#9DFF00",
           flex: 1,
           alignSelf: "flex-end",
-          position: "absolute",
+          top: -10,
         }}
       >
         Hi There 👋
