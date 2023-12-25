@@ -110,4 +110,20 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
+HomeScreen.navigationOptions = ({ navigation }) => {
+  return {
+    headerRight: (
+      <Feather
+        name="edit"
+        size={17}
+        color="black"
+        style={{
+          marginRight: 5,
+          marginTop: 5,
+        }}
+      />
+    ),
+  };
+};
+
 export default HomeScreen;
