@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, ToastAndroid, TextInput, Button } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { addBlog, updateBlog } from "../reduxToolkit/CartSlice";
+import jsonServer from "../api/jsonServer";
 
 const CreateScreen = ({ navigation }) => {
   const [data, setData] = useState({
@@ -66,7 +67,8 @@ const CreateScreen = ({ navigation }) => {
       />
       <Button
         title="Add Blog"
-        onPress={() => {
+        onPress={async () => {
+          let res = await jsonServer.post("/blog/", data);
           dispatch(addBlog(data));
           ToastAndroid.showWithGravityAndOffset(
             "Blog Added Successfully 😊",

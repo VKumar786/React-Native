@@ -15,3 +15,6 @@ WDRZHJTXA8
 V636983B8V
 TSD977KBBG
 W5KAX33EKM
+
+import {Provider as UserProvider} from './'
+import {Provider as BlogProvider} from './'

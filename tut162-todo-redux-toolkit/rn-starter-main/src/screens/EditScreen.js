@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { View, Text, ToastAndroid, TextInput, Button } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { updateBlog } from "../reduxToolkit/CartSlice";
+import jsonServer from "../api/jsonServer";
 
 const EditScreen = ({ navigation }) => {
   const [data, setData] = useState();
   const blogData = useSelector((state) => state.blog);
   const dispatch = useDispatch();
+
   useEffect(() => {
     setData(
       blogData.filter((item) => item.id === navigation.getParam("id", ""))[0]
@@ -69,7 +71,11 @@ const EditScreen = ({ navigation }) => {
       />
       <Button
         title="Update"
-        onPress={() => {
+        onPress={async () => {
+          let res = await jsonServer.put(
+            `/blog/${navigation.getParam("id", "")}`,
+            data
+          );
           dispatch(updateBlog(data));
           ToastAndroid.showWithGravityAndOffset(
             "Updated Successfully 😊",

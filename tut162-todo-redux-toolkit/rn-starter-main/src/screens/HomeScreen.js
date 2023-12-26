@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Text,
   View,
@@ -14,6 +14,7 @@ import { removeBlog, storeAllBlog } from "../reduxToolkit/CartSlice";
 import jsonServer from "../api/jsonServer";
 
 const HomeScreen = ({ navigation }) => {
+  const [loading, setLoading] = useState(true);
   const blogData = useSelector((state) => state.blog);
   const dispatch = useDispatch();
 
@@ -24,9 +25,18 @@ const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     fetchAllBlog();
-    return () => {};
+
+    const listener = navigation.addListener("didFocus", () => {
+      fetchAllBlog();
+    });
+    setLoading(false);
+    return () => {
+      // when user have switched to another application
+      listener.remove();
+    };
   }, []);
 
+  if (loading) return <Text>Loading...</Text>;
   return (
     <ScrollView style={{ padding: 7 }}>
       {blogData.length === 0 && (
@@ -89,7 +99,8 @@ const HomeScreen = ({ navigation }) => {
                   <Feather name="edit" size={15} color="black" />
                 </TouchableOpacity>
                 <TouchableOpacity
-                  onPress={() => {
+                  onPress={async () => {
+                    let res = await jsonServer.delete(`/blog/${item.id}`);
                     dispatch(removeBlog(item.id));
                     ToastAndroid.showWithGravityAndOffset(
                       "Blog Delete Successfully 😊",
