@@ -1,0 +1,19 @@
+{
+  "name": "jsonserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db": "json-server -w db.json -p 3000",
+    "tunnel": "ngrok http 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ngrok/ngrok": "^0.9.1",
+    "json-server": "^0.17.4",
+    "ngrok": "^5.0.0-beta.2"
+  }
+}

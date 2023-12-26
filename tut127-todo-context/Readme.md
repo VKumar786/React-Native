@@ -2,6 +2,8 @@
    TODO: 127. Initial Setup
    TODO: 128. Wrapping the Navigator
    ! Err that I & Ritu was facing to displaing Err on login
+   TODO: 161. Outside Data API
+   TODO: 162. Issues with Servers + React Native
 -->
 
 addBlogPost(title, content, () => {
