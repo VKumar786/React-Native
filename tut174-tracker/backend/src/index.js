@@ -1,4 +1,5 @@
 require("./models/user");
+require("./models/track");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -19,6 +20,7 @@ mongoose.connection.on("connected", () => {
 
 app.use(bodyParser.json());
 app.use("/auth", require("./routes/authRoutes"));
+app.use("/tracks", require("./routes/trackRoutes"));
 
 app.get("/", requireAuth, (req, res) => {
   res.send({
