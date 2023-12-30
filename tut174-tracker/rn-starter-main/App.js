@@ -1,5 +1,7 @@
-import { createAppContainer } from "react-navigation";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+
 import AccountScreen from "./src/screens/AccountScreen";
 import SigninScreen from "./src/screens/SigninScreen";
 import SignupScreen from "./src/screens/SignupScreen";
@@ -7,21 +9,19 @@ import TrackCreateScreen from "./src/screens/TrackCreateScreen";
 import TrackDetailsScreen from "./src/screens/TrackDetailsScreen";
 import TrackListScreen from "./src/screens/TrackListScreen";
 
-const navigator = createStackNavigator(
-  {
-    Account: AccountScreen,
-    Signin: SigninScreen,
+const navigator = createSwitchNavigator({
+  loginFlow: createStackNavigator({
     Signup: SignupScreen,
+    Signin: SigninScreen,
+  }),
+  mainFlow: createMaterialBottomTabNavigator({
+    trackListFlow: createStackNavigator({
+      TrackList: TrackListScreen,
+      TrackDetails: TrackDetailsScreen,
+    }),
+    Account: AccountScreen,
     TrackCreate: TrackCreateScreen,
-    TrackDetails: TrackDetailsScreen,
-    TrackList: TrackListScreen,
-  },
-  {
-    initialRouteName: "Signup",
-    defaultNavigationOptions: {
-      title: "App 😊",
-    },
-  }
-);
+  }),
+});
 
 export default createAppContainer(navigator);
