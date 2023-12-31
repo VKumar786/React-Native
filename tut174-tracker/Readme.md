@@ -6,4 +6,16 @@
     ? npm install react-navigation-material-bottom-tabs react-native-paper@4 --legacy-peer-deps
     TODO: 201. A LOT of Boilerplate
     TODO: 203. Testing the Navigation Flow
+    ? npm i react-native-elements --legacy-peer-deps
+    TODO: 205. Helper Styling Components
+    ! ngrok http 3000
+    TODO: 214. Async Storage
  -->
+
+secureTextEntry for password input
+
+SigninScreen.navigationOptions = () => {
+  return {
+    headerShown: false,
+  };
+};
