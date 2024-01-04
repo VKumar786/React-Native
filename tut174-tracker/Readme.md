@@ -16,6 +16,7 @@
     TODO: 228. Automatic Signin
     TODO: 229. Empty Screens While Resolving Auth
     TODO: 230. Signing Out a User
+    ! npx expo install react-native-maps -- --legacy-peer-deps
  -->
 
 secureTextEntry for password input

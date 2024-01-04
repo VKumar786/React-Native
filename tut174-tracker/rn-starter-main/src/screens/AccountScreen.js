@@ -20,7 +20,7 @@ const AccountScreen = ({ navigation }) => {
         flex: 1,
         padding: 10,
         height: "70%",
-        marginTop: Platform.OS === "android" ? 50 : 0,
+        marginTop: Platform.OS === "android" ? 40 : 0,
       }}
       forceInset={{ top: "always" }}
     >
