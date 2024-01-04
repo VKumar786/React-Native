@@ -11,6 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import trackerApi from "../api/tracker";
 import { addToken } from "../reduxToolkit/AuthSlice";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SigninScreen = ({ navigation }) => {
   const authData = useSelector((state) => state.auth);
@@ -85,6 +86,7 @@ const SigninScreen = ({ navigation }) => {
         onPress={async () => {
           try {
             let res = await trackerApi.post("/auth/signin", data);
+            await AsyncStorage.setItem("authToken", res.data.token);
             dispatch(addToken(res.data));
             ToastAndroid.showWithGravityAndOffset(
               "Sign In Successfully 😊",

@@ -10,6 +10,13 @@
     TODO: 205. Helper Styling Components
     ! ngrok http 3000
     TODO: 214. Async Storage
+    ! NavigationRef is used to redirect outside Components
+    TODO: 217. Navigation From Outside of React
+    ! onWillFocus vs onWillBlur Update
+      * In the upcoming lecture, we will be adding NavigationEvents to our SignupScreen and SigninScreen and passing it event props to clear our error messages. You may notice that the error message is only cleared from SignupScreen to SigninScreen, but does not work if you are navigating from Signinscreen to SignupScreen.
+      * To resolve this, use onWillFocus:
+      * <NavigationEvents onWillFocus={clearErrorMessage} onDidFocus={} onWillBlur={} onWillFocus={}/>
+    
  -->
 
 secureTextEntry for password input
@@ -19,3 +26,24 @@ SigninScreen.navigationOptions = () => {
     headerShown: false,
   };
 };
+
+<!-- when user navigate to another page like same event of banner one-->
+
+useEffect(() => {
+  getBlogStore()
+
+  const listener = navigation.addListener("didFocus", () => {
+    getBlogStore()
+  })
+
+  return () => { listener.remove() }
+}, [])
+
+<!-- Imp -->
+
+<NavigationEvents 
+onWillFocus={() => {}} This event is triggered just before the screen/component is about to focus or become visible.
+onDidFocus={() => {}} This event is triggered after the screen/component has been focused or become visible.
+onWillBlur={() => {}}  This event is triggered just before the screen/component is about to blur or become hidden.
+onDidBlur={() => {}}  This event is triggered after the screen/component has been blurred or hidden.
+/>

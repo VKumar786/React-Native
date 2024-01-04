@@ -10,6 +10,7 @@ import TrackDetailsScreen from "./src/screens/TrackDetailsScreen";
 import TrackListScreen from "./src/screens/TrackListScreen";
 import store from "./src/reduxToolkit/store";
 import { Provider } from "react-redux";
+import { setNavigator } from "./src/navigationRef";
 
 const navigator = createSwitchNavigator({
   loginFlow: createStackNavigator({
@@ -27,14 +28,12 @@ const navigator = createSwitchNavigator({
 });
 
 // export default createAppContainer(navigator);
-const AppContainer = createAppContainer(navigator);
+const App = createAppContainer(navigator);
 
-const App = () => {
+export default () => {
   return (
     <Provider store={store}>
-      <AppContainer />
+      <App ref={(navigator) => setNavigator(navigator)} />
     </Provider>
   );
 };
-
-export default App;
