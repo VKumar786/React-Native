@@ -11,8 +11,10 @@ import TrackListScreen from "./src/screens/TrackListScreen";
 import store from "./src/reduxToolkit/store";
 import { Provider } from "react-redux";
 import { setNavigator } from "./src/navigationRef";
+import ResolveAuth from "./src/screens/ResolveAuthScreen";
 
 const navigator = createSwitchNavigator({
+  ResolveAuth: ResolveAuth,
   loginFlow: createStackNavigator({
     Signup: SignupScreen,
     Signin: SigninScreen,
