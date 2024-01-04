@@ -24,8 +24,8 @@ const navigator = createSwitchNavigator({
       TrackList: TrackListScreen,
       TrackDetails: TrackDetailsScreen,
     }),
+    Create: TrackCreateScreen,
     Account: AccountScreen,
-    TrackCreate: TrackCreateScreen,
   }),
 });
 

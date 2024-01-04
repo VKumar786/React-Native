@@ -25,7 +25,7 @@ const AccountScreen = ({ navigation }) => {
       forceInset={{ top: "always" }}
     >
       <Text style={{ marginVertical: 3, fontSize: 25, fontWeight: "700" }}>
-        Create Track
+        User Actions
       </Text>
       <Button
         title="Sign Out"
