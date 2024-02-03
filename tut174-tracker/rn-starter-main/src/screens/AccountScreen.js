@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { removeToken } from "../reduxToolkit/AuthSlice";
 import { SafeAreaView } from "react-navigation";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Entypo } from "@expo/vector-icons";
 
 const AccountScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -47,5 +48,10 @@ const AccountScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({});
+
+AccountScreen.navigationOptions = {
+  tabBarLabel: "Add Track",
+  tabBarIcon: ({ tintColor }) => <Entypo name="cog" size={24} color="white" />,
+};
 
 export default AccountScreen;

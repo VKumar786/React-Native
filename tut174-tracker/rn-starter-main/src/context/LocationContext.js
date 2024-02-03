@@ -4,6 +4,7 @@ import {
   add_current_location,
   add_location,
   change_name,
+  reset_data,
   start_recording,
   stop_recording,
 } from "../reduxToolkit/LocationSlice";
@@ -33,9 +34,19 @@ export const LocationProvider = ({ children }) => {
     dispatch(change_name(name));
   };
 
+  const resetData = () => {
+    dispatch(reset_data());
+  };
+
   return (
     <LocationContext.Provider
-      value={{ startRecording, stopRecording, addLocation, changeName }}
+      value={{
+        startRecording,
+        stopRecording,
+        addLocation,
+        changeName,
+        resetData,
+      }}
     >
       {children}
     </LocationContext.Provider>

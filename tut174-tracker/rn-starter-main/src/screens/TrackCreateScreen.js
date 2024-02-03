@@ -4,9 +4,10 @@ import { StyleSheet, View, Text } from "react-native";
 import TrackForm from "../components/TrackForm";
 import Maps from "../components/Maps";
 import { LocationContext } from "../context/LocationContext";
-import useLocation from "../../hooks/useLocation";
+import useLocation from "../hooks/useLocation";
 import { withNavigationFocus } from "react-navigation";
 import { useSelector } from "react-redux";
+import { Ionicons } from "@expo/vector-icons";
 
 const TrackCreateScreen = ({ isFocused }) => {
   const { recording } = useSelector((state) => state.location);
@@ -36,5 +37,12 @@ const TrackCreateScreen = ({ isFocused }) => {
 };
 
 const styles = StyleSheet.create({});
+
+TrackCreateScreen.navigationOptions = {
+  tabBarLabel: "Add Track",
+  tabBarIcon: ({ tintColor }) => (
+    <Ionicons name="add" size={24} color="white" />
+  ),
+};
 
 export default withNavigationFocus(TrackCreateScreen);

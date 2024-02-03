@@ -1,4 +1,5 @@
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import { Ionicons } from "@expo/vector-icons";
 import { createStackNavigator } from "react-navigation-stack";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 
@@ -15,6 +16,19 @@ import ResolveAuth from "./src/screens/ResolveAuthScreen";
 
 // context
 import { LocationProvider } from "./src/context/LocationContext";
+import { TrackProvider } from "./src/context/TrackContext";
+
+const trackListFlow = createStackNavigator({
+  TrackList: TrackListScreen,
+  TrackDetails: TrackDetailsScreen,
+});
+
+trackListFlow.navigationOptions = {
+  tabBarLabel: "Home",
+  tabBarIcon: ({ tintColor }) => (
+    <Ionicons name="home" size={24} color="white" />
+  ),
+};
 
 const navigator = createSwitchNavigator({
   ResolveAuth: ResolveAuth,
@@ -23,10 +37,7 @@ const navigator = createSwitchNavigator({
     Signin: SigninScreen,
   }),
   mainFlow: createMaterialBottomTabNavigator({
-    trackListFlow: createStackNavigator({
-      TrackList: TrackListScreen,
-      TrackDetails: TrackDetailsScreen,
-    }),
+    trackListFlow: trackListFlow,
     Create: TrackCreateScreen,
     Account: AccountScreen,
   }),
@@ -38,9 +49,11 @@ const App = createAppContainer(navigator);
 export default () => {
   return (
     <Provider store={store}>
-      <LocationProvider>
-        <App ref={(navigator) => setNavigator(navigator)} />
-      </LocationProvider>
+      <TrackProvider>
+        <LocationProvider>
+          <App ref={(navigator) => setNavigator(navigator)} />
+        </LocationProvider>
+      </TrackProvider>
     </Provider>
   );
 };

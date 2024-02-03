@@ -2,11 +2,14 @@ import React, { useContext, useEffect } from "react";
 import { Button, TextInput, View, Text } from "react-native";
 import { LocationContext } from "../context/LocationContext";
 import { useSelector } from "react-redux";
+import useSaveTrack from "../hooks/useSaveTrack";
 
 const TrackForm = () => {
   const { name, recording, locations } = useSelector((state) => state.location);
   const { startRecording, stopRecording, changeName } =
     useContext(LocationContext);
+
+  const [saveTrack] = useSaveTrack();
 
   return (
     <View>
@@ -33,8 +36,8 @@ const TrackForm = () => {
         )}
       </View>
       <View style={{ padding: 7 }}>
-        {!recording && locations.length ? (
-          <Button title="Save Track" onPress={stopRecording} />
+        {!recording && name.length && locations.length ? (
+          <Button title="Save Track" onPress={saveTrack} />
         ) : null}
       </View>
     </View>

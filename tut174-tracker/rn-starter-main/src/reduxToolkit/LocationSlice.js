@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const locationSlice = createSlice({
-  name: "auth",
+  name: "location",
   initialState,
   reducers: {
     add_current_location(state, action) {
@@ -41,6 +41,13 @@ const locationSlice = createSlice({
         name: action.payload,
       };
     },
+    reset_data(state, action) {
+      return {
+        locations: [],
+        recording: false,
+        name: "",
+      };
+    },
   },
 });
 
@@ -50,5 +57,7 @@ export const {
   add_location,
   stop_recording,
   change_name,
+  reset_data,
 } = locationSlice.actions;
+
 export default locationSlice.reducer;
