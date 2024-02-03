@@ -6,11 +6,9 @@ import { LocationContext } from "../context/LocationContext";
 
 const Maps = () => {
   const {} = useContext(LocationContext);
-  const locationData = useSelector((state) => state.location).currentLocation;
+  const { currentLocation, locations } = useSelector((state) => state.location);
 
-  console.warn(locationData);
-
-  if (!locationData) {
+  if (!currentLocation) {
     return <ActivityIndicator size={"large"} style={{ marginTop: 200 }} />;
   }
 
@@ -18,22 +16,23 @@ const Maps = () => {
     <MapView
       style={styles.map}
       initialRegion={{
-        ...locationData.coords,
+        ...currentLocation.coords,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
       }}
       region={{
-        ...locationData.coords,
+        ...currentLocation.coords,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
       }}
     >
       <Circle
-        center={locationData.coords}
+        center={currentLocation.coords}
         radius={30}
         strokeColor="rgba(158,158,255,1.0)"
         fillColor="rgba(158,158,255,0.3)"
       />
+      <Polyline coordinates={locations.map((location => location.coords))} />
     </MapView>
   );
 };

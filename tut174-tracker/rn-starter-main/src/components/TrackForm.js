@@ -1,14 +1,19 @@
-import React, { useState } from "react";
-import { Button, TextInput, View } from "react-native";
+import React, { useContext, useEffect } from "react";
+import { Button, TextInput, View, Text } from "react-native";
+import { LocationContext } from "../context/LocationContext";
+import { useSelector } from "react-redux";
 
 const TrackForm = () => {
-  const [TrackName, setTrackName] = useState("");
+  const { name, recording, locations } = useSelector((state) => state.location);
+  const { startRecording, stopRecording, changeName } =
+    useContext(LocationContext);
+
   return (
     <View>
       <TextInput
-        placeholder="Name for track"
-        value={TrackName}
-        onChangeText={(newTrackName) => setTrackName(newTrackName)}
+        placeholder="Enter Track Name"
+        value={name}
+        onChangeText={changeName}
         autoCorrect={false}
         autoCapitalize="none"
         style={{
@@ -20,7 +25,18 @@ const TrackForm = () => {
           color: "#262626",
         }}
       />
-      <Button title="Record" />
+      <View style={{ padding: 7 }}>
+        {!recording ? (
+          <Button title="Start Recording" onPress={startRecording} />
+        ) : (
+          <Button title="Stop" onPress={stopRecording} />
+        )}
+      </View>
+      <View style={{ padding: 7 }}>
+        {!recording && locations.length ? (
+          <Button title="Save Track" onPress={stopRecording} />
+        ) : null}
+      </View>
     </View>
   );
 };

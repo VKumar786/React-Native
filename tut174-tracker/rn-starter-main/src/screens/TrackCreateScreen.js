@@ -1,23 +1,20 @@
 import "../_mockLocation";
-import React, { useContext } from "react";
+import React, { useContext, useCallback } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import TrackForm from "../components/TrackForm";
 import Maps from "../components/Maps";
 import { LocationContext } from "../context/LocationContext";
 import useLocation from "../../hooks/useLocation";
+import { withNavigationFocus } from "react-navigation";
+import { useSelector } from "react-redux";
 
-const TrackCreateScreen = () => {
+const TrackCreateScreen = ({ isFocused }) => {
+  const { recording } = useSelector((state) => state.location);
   const { addLocation } = useContext(LocationContext);
-  // Same Code
-  // 1.
-  // const [err] = useLocation((location) => {
-  // console.warn(JSON.stringify(location));
-  // addLocation(location);
-  // });
-  // 2.
-  // const [err] = useLocation((location) => addLocation(location) });
-
-  const [err] = useLocation(addLocation);
+  const [err] = useLocation(
+    isFocused || recording,
+    useCallback((location) => addLocation(location), [recording])
+  );
 
   return (
     <View
@@ -40,4 +37,4 @@ const TrackCreateScreen = () => {
 
 const styles = StyleSheet.create({});
 
-export default TrackCreateScreen;
+export default withNavigationFocus(TrackCreateScreen);
