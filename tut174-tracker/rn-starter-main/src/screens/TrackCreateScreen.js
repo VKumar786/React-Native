@@ -1,9 +1,44 @@
-import React from "react";
+import "../_mockLocation";
+import React, { useEffect, useState, useContext } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import TrackForm from "../components/TrackForm";
 import Maps from "../components/Maps";
+import {
+  requestForegroundPermissionsAsync,
+  watchPositionAsync,
+  Accuracy,
+} from "expo-location";
+import { LocationContext } from "../context/LocationContext";
 
 const TrackCreateScreen = () => {
+  const [err, setErr] = useState(null);
+  const { addLocation } = useContext(LocationContext);
+
+  const startWatching = async () => {
+    try {
+      const { granted } = await requestForegroundPermissionsAsync();
+      if (!granted) throw new Error("Location permission not granted");
+
+      await watchPositionAsync(
+        {
+          accuracy: Accuracy.BestForNavigation,
+          timeInterval: 1000,
+          distanceInterval: 10,
+        },
+        (location) => {
+          // console.warn(JSON.stringify(location));
+          addLocation(location);
+        }
+      );
+    } catch (error) {
+      setErr(error);
+    }
+  };
+
+  useEffect(() => {
+    startWatching();
+  }, []);
+
   return (
     <View
       style={{
@@ -18,6 +53,7 @@ const TrackCreateScreen = () => {
       </Text>
       <Maps />
       <TrackForm />
+      {err && <Text>Please enable location services</Text>}
     </View>
   );
 };

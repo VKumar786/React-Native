@@ -13,6 +13,9 @@ import { Provider } from "react-redux";
 import { setNavigator } from "./src/navigationRef";
 import ResolveAuth from "./src/screens/ResolveAuthScreen";
 
+// context
+import { LocationProvider } from "./src/context/LocationContext";
+
 const navigator = createSwitchNavigator({
   ResolveAuth: ResolveAuth,
   loginFlow: createStackNavigator({
@@ -35,7 +38,9 @@ const App = createAppContainer(navigator);
 export default () => {
   return (
     <Provider store={store}>
-      <App ref={(navigator) => setNavigator(navigator)} />
+      <LocationProvider>
+        <App ref={(navigator) => setNavigator(navigator)} />
+      </LocationProvider>
     </Provider>
   );
 };

@@ -1,18 +1,40 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import MapView from "react-native-maps";
+import React, { useContext } from "react";
+import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
+import MapView, { Circle, Polyline } from "react-native-maps";
+import { useSelector } from "react-redux";
+import { LocationContext } from "../context/LocationContext";
 
 const Maps = () => {
+  const {} = useContext(LocationContext);
+  const locationData = useSelector((state) => state.location).currentLocation;
+
+  console.warn(locationData);
+
+  if (!locationData) {
+    return <ActivityIndicator size={"large"} style={{ marginTop: 200 }} />;
+  }
+
   return (
     <MapView
       style={styles.map}
       initialRegion={{
-        latitude: 28.983296,
-        longitude: 77.66016,
-        latitudeDelta: 0.0001,
-        longitudeDelta: 0.0001,
+        ...locationData.coords,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
       }}
-    />
+      region={{
+        ...locationData.coords,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
+      }}
+    >
+      <Circle
+        center={locationData.coords}
+        radius={30}
+        strokeColor="rgba(158,158,255,1.0)"
+        fillColor="rgba(158,158,255,0.3)"
+      />
+    </MapView>
   );
 };
 
