@@ -18,6 +18,8 @@
     TODO: 230. Signing Out a User
     ! npx expo install react-native-maps -- --legacy-peer-deps
     TODO: 234. Showing a Map
+    ! carefully handle setInterval, setTimeout
+    ! icons https://icons.expo.fyi/Index
  -->
 
 secureTextEntry for password input

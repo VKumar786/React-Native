@@ -165,7 +165,6 @@ const HomeScreen = ({ navigation }) => {
         search={search}
         setSearch={setSearch}
         onTermSubmit={() => {
-          console.log("submitted -- 1");
           searchApi(search);
         }}
       />
